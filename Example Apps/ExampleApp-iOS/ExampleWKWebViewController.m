@@ -23,6 +23,9 @@
     WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.view.bounds];
     webView.navigationDelegate = self;
     [self.view addSubview:webView];
+    if (@available(iOS 16.4, *)) {
+        webView.inspectable = YES;
+    };
     [WKWebViewJavascriptBridge enableLogging];
     _bridge = [WKWebViewJavascriptBridge bridgeForWebView:webView];
     [_bridge setWebViewDelegate:self];
